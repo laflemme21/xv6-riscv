@@ -2,6 +2,6 @@
 #include "./user.h"
 
 int main(int argc, char *argv[]){
-    printf("Hello World");
+    printf("%d\n",uptime());
     exit(0);
-};
+}

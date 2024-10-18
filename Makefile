@@ -140,6 +140,9 @@ UPROGS=\
 	$U/_wc\
 	$U/_zombie\
 	$U/_hw\
+	$U/_sleep\
+	$U/_uptime\
+	$U/_pingpong\
 
 fs.img: mkfs/mkfs README $(UPROGS)
 	mkfs/mkfs fs.img README $(UPROGS)

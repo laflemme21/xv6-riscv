@@ -1,0 +1,8 @@
+{
+    "files.associations": {
+        "*.hdl": "vhdl",
+        "*.asm": "csv",
+        "user.h": "c",
+        "types.h": "c"
+    }
+}
