@@ -11,24 +11,24 @@ int main(int argc, char *argv[]){
 
     int pid=fork();
 
-    //parent execution
-    if(pid>0){ 
-    char h_byte='h';
-    write(pToC[1], &h_byte,1);
-
-    char received_byte;
-    read(cToP[0],&received_byte,1);
-    //%c doesnt work in xv6 anymore so we are printing the ascii code of the chars
-    printf("%d: received ping %d\n",pid,received_byte);
-    }
-
     // child execution
-    else if(pid==0){ 
-    char received_byte;
-    read(cToP[0],&received_byte,1); // read waits for input
-    printf("%d: received ping %d\n",getpid(),received_byte);
-    received_byte++;
-    write(pToC[1], &received_byte,1);
+    if(pid==0){ 
+        char charr;
+        pid =getpid();
+        read(pToC[0],&charr,1);
+        printf("%d received %d\n",pid,charr);
+        charr++;
+        write(cToP[1],&charr,1);
+    }
+    //parent execution
+    else if(pid>0){ 
+        pid =getpid();
+        char charr='H';
+        write(pToC[1],&charr,1);
+        wait(0);
+        read(cToP[0],&charr,1);
+        printf("%d received %d\n",pid,charr);
+
 
     }
 
